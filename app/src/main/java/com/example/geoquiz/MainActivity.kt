@@ -9,7 +9,8 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
 
     lateinit var questions: ArrayList<Question>
-    var pos = 0;
+    var pos = 0
+    var lives = 5
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,16 +23,24 @@ class MainActivity : AppCompatActivity() {
         questions = ArrayList()
         questions.add(Question("¿Es Arica capital de Lima?",false))
         questions.add(Question("¿Es Lima capital de Perú?",true))
+        questions.add(Question("¿Es New York capital de EEUU?",false))
+        questions.add(Question("¿Es Londres capital de Reino Unido?",true))
+        questions.add(Question("¿Es Roma capital de Francia?",false))
+        questions.add(Question("¿Es Auckland capital de Nueva Zelanda?",false))
         questions.add(Question("¿Es Santiago capital de Lima?",false))
-        questions.add(Question("¿Es Santiago capital de Chile?",true))
-        questions.add(Question("¿Es La Paz capital de Brasil?",false))
+        questions.add(Question("¿Es Montevideo capital de Chile?",false))
+        questions.add(Question("¿Es Sao Paulo capital de Brasil?",false))
+        questions.add(Question("¿Es La Paz capital de Bolivia?",false))
     }
 
     private fun setupViews() {
         val btYes = findViewById<Button>(R.id.btYes)
         val btNo = findViewById<Button>(R.id.btNo)
+        val btNext = findViewById<Button>(R.id.btNext)
         val textQuestion = findViewById<TextView>(R.id.tvQuestion)
+        val textLives = findViewById<TextView>(R.id.tvLives)
         textQuestion.text = questions[pos].sentence
+        textLives.text = lives.toString()
 
 
         btYes.setOnClickListener{
@@ -39,15 +48,24 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Right", Toast.LENGTH_LONG).show()
             }else{
                 Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show()
+                lives--
+                textLives.text = lives.toString()
             }
         }
 
         btNo.setOnClickListener {
-            if(questions[pos].answer){
+            if(!questions[pos].answer){
                 Toast.makeText(this, "Right", Toast.LENGTH_LONG).show()
             }else{
                 Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show()
+                lives--
+                textLives.text = lives.toString()
             }
+        }
+
+        btNext.setOnClickListener{
+            pos++
+            textQuestion.text = questions[pos].sentence
         }
     }
 }

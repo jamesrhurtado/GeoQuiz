@@ -13,7 +13,7 @@
         android:layout_marginStart="267dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="41dp"
-        android:text="Next"
+        android:text="@string/next"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:layout_marginStart="91dp"
         android:layout_marginTop="204dp"
         android:layout_marginEnd="112dp"
-        android:text="No"
+        android:text="@string/no"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btYes"
@@ -36,7 +36,7 @@
         android:id="@+id/tvQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pregunta"
+        android:text="@string/question"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.45"
@@ -51,10 +51,22 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="205dp"
         android:layout_marginEnd="40dp"
-        android:text="Yes"
+        android:text="@string/yes"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/btNo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLives"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="193dp"
+        android:text="@string/lives"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
