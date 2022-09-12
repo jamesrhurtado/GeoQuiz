@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupViews() {
         val btYes = findViewById<Button>(R.id.btYes)
         val btNo = findViewById<Button>(R.id.btNo)
-        val btNext = findViewById<Button>(R.id.btNext)
+        val btAgain = findViewById<Button>(R.id.btAgain)
         val textQuestion = findViewById<TextView>(R.id.tvQuestion)
         val textLives = findViewById<TextView>(R.id.tvLives)
         textQuestion.text = questions[pos].sentence
@@ -49,8 +49,10 @@ class MainActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show()
                 lives--
-                textLives.text = lives.toString()
             }
+            pos++
+            textQuestion.text = questions[pos].sentence
+            textLives.text = lives.toString()
         }
 
         btNo.setOnClickListener {
@@ -59,13 +61,16 @@ class MainActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show()
                 lives--
-                textLives.text = lives.toString()
             }
-        }
-
-        btNext.setOnClickListener{
             pos++
             textQuestion.text = questions[pos].sentence
+            textLives.text = lives.toString()
+        }
+
+        btAgain.setOnClickListener{
+            pos++
+            textQuestion.text = questions[pos].sentence
+            textLives.text = lives.toString()
         }
     }
 }
