@@ -48,11 +48,9 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Right", Toast.LENGTH_LONG).show()
             }else{
                 Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show()
-                lives--
+                updateLives()
             }
-            pos++
-            textQuestion.text = questions[pos].sentence
-            textLives.text = lives.toString()
+            updateQuestion()
         }
 
         btNo.setOnClickListener {
@@ -60,17 +58,27 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Right", Toast.LENGTH_LONG).show()
             }else{
                 Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show()
-                lives--
+                updateLives()
             }
-            pos++
-            textQuestion.text = questions[pos].sentence
-            textLives.text = lives.toString()
+            updateQuestion()
         }
 
         btAgain.setOnClickListener{
-            pos++
+            pos = 0
             textQuestion.text = questions[pos].sentence
             textLives.text = lives.toString()
         }
+    }
+
+    fun updateLives(){
+        lives--
+    }
+
+    fun updateQuestion(){
+        pos++
+        val textQuestion = findViewById<TextView>(R.id.tvQuestion)
+        val textLives = findViewById<TextView>(R.id.tvLives)
+        textQuestion.text = questions[pos].sentence
+        textLives.text = lives.toString()
     }
 }
